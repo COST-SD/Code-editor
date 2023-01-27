@@ -10,6 +10,7 @@ function App() {
             <Route>
               <Route path ='/' element= {<Home/>} ></Route>
               <Route path ='/editor/:roomId' element= {<EditorPage/>} ></Route>
+              
             </Route>
           </Routes>
         </BrowserRouter>
