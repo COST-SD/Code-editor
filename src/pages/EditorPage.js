@@ -37,9 +37,21 @@ const EditorPage = () => {
             });
 
             // Listening for joined event
+            socketRef.current.on(
+                ACTIONS.JOINED,
+                ({ clients, username, socketId }) => {
+                    if (username !== location.state?.username) {
+                        toast.success(`${username} joined the room.`);
+                        console.log(`${username} joined`);
+                    }
+                    setClients(clients);
+                    socketRef.current.emit(ACTIONS.SYNC_CODE, {
+                        code: codeRef.current,
+                        socketId,
+                    });
+                }
+            );
 
-
-            
             // Listening for disconnected
             socketRef.current.on(
                 ACTIONS.DISCONNECTED,
@@ -90,7 +102,19 @@ const EditorPage = () => {
                             alt="logo"
                         />
                     </div>
+                    <h3>Connected</h3>
+                    <div className="clientsList">
+                        {clients.map((client) => (
+                            <Client
+                                key={client.socketId}
+                                username={client.username}
+                            />
+                        ))}
+                    </div>
                 </div>
+                <button className="btn copyBtn" onClick={copyRoomId}>
+                    Copy ROOM ID
+                </button>
                 <button className="btn leaveBtn" onClick={leaveRoom}>
                     Leave
                 </button>
