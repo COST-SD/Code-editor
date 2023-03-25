@@ -105,6 +105,12 @@ footer a:hover {
   flex: 1;
 }
 
+.clientsList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
 .client {
   display: flex;
@@ -121,3 +127,17 @@ footer a:hover {
   padding-bottom: 10px;
 }
 
+.logoImage {
+  height: 60px;
+}
+
+.leaveBtn {
+  width: 100%;
+  margin-top: 20px;
+}
+.CodeMirror {
+  min-height: calc(100vh - 20px);
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
+}
