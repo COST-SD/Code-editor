@@ -34,26 +34,6 @@ const Home = () => {
             joinRoom();
         }
     };
-
-    async function copyRoomId() {
-        try {
-            await navigator.clipboard.writeText(roomId);
-            toast.success('Room ID has been copied to your clipboard');
-        } catch (err) {
-            toast.error('Could not copy the Room ID');
-            console.error(err);
-        }
-    }
-
-    function leaveRoom() {
-        reactNavigator('/');
-    }
-
-    if (!location.state) {
-        return <Navigate to="/" />;
-    }
-
-
     return (
         <div className="homePageWrapper">
             <div className="formWrapper">
@@ -95,15 +75,9 @@ const Home = () => {
                     </span>
                 </div>
             </div>
-                <button className="btn copyBtn" onClick={copyRoomId}>
-                    Copy ROOM ID
-                </button>
-                <button className="btn leaveBtn" onClick={leaveRoom}>
-                    Leave
-                </button>
             <footer>
                 <h4>
-                    Built with 💛 &nbsp; by &nbsp;
+                Built with 💛 &nbsp; by &nbsp;
                     <a href="https://github.com/codersgyan">CODE-SD</a>
                 </h4>
             </footer>
